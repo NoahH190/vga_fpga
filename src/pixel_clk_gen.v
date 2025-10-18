@@ -2,7 +2,7 @@ module pixel_clk_gen(
     input wire clk_in,  //system clock, 100 MHz
     input wire resetn,
     output wire clk_pix,   //25.175 MHz
-    output wire locked,
+    output wire locked
 )
 
 // create a clock divider to get a pixel clock of 25.175 MHz, divide by 3.972
@@ -16,11 +16,11 @@ module pixel_clk_gen(
             clock_out <= 1'b0;
         end else begin 
             counter <= counter + 1;
-            if(counter % 4 == 0) begin
-                clock_out <= ~clock_out;
+            if(counter >= divisor - 1) begin
+                clock_pix <= ~clock_pix;
                 counter <= 32'd0;
             end
         end
     end
-    
+
 endmodule 
