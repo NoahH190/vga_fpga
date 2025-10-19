@@ -9,8 +9,22 @@ module vga_timing_640x480(
 
 always @(posedge clk_pix or posedge resetn) begin 
     if(resetn) begin
-
+        hcount <= 10'b0;
+        vcount <= 10'b0;
     end else begin 
-        hcount <= hcount + 1;
+        if(hcount < 752 && hcount > 655)
+            hsync <= ~hsync;
+        if(hcount < 489 && hcount > 492)
+            vsync <= ~vsync;
+        if(hcount <= 799)
+            hcount <= 10'b0;
+        if(vcount <= 524)
+            vcount <= 10'b0;
+        else begin 
+            hcount <= hcount + 1;
+            vcount <= vcount + 1;
+        end
     end
 end
+
+assign de <= (hcount < 640) && (vcount < 480);
