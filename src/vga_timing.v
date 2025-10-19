@@ -14,7 +14,7 @@ always @(posedge clk_pix or posedge resetn) begin
     end else begin 
         if(hcount < 752 && hcount > 655)
             hsync <= ~hsync;
-        if(hcount < 489 && hcount > 492)
+        if(vcount < 489 && vcount > 492)
             vsync <= ~vsync;
         if(hcount <= 799)
             hcount <= 10'b0;
