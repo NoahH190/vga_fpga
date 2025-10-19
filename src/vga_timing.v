@@ -5,7 +5,7 @@ module vga_timing_640x480(
     output wire [9:0] vcount,
     output wire hsync,
     output wire de,
-)
+);
 
 always @(posedge clk_pix or posedge resetn) begin 
     if(resetn) begin
