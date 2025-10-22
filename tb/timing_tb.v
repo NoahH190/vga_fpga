@@ -4,33 +4,20 @@ module vga_timing_test;
     wire hsync, locked;
     vga_timing_block vt1 (clk_pix, resetn, hcount, vcount, hsync, locked);
  
-initial begin 
-    $dumpfile("vga_timing.vcd");
-    $dumpvars(0,vga_timing_test);
-    
-    clk_pix = 0; b = 0; #10;
-    clk_pix = 0; b = 1; #10;
-    clk_pix = 1; b = 0; #10;
-    clk_pix = 1; b = 1; #10;
+    initial begin 
+        $dumpfile("vga_timing.vcd");
+        $dumpvars(0,vga_timing_test);
+        
+        clk_pix = 0; b = 0; #10;
+        clk_pix = 0; b = 1; #10;
+        clk_pix = 1; b = 0; #10;
+        clk_pix = 1; b = 1; #10;
 
-    $finish;
-end
+        $finish;
+    end
 
+    initial 
+        $monitor("At time %2t, clk_pix = %d, resetn = %d, hcount = %d, vcount = %d, hsync = %d, locked = %d")
+                $time, clk_pix, resetn, hcount, vcount, hsync, locked;
 
-
-
-vga_timing_640x480 dut (
-    .clk_pix,
-    .resetn,
-    .hcount,
-    .vcount,
-    .hsync,
-    .de
-);
-
-pixel_clk_gen0 dut2 (
-    .clk_in,  //system clock, 100 MHz
-    .resetn,
-    .clk_pix,   //25 MHz (should be 25.175 but wtv)
-    .locked
-);
+endmodule 
