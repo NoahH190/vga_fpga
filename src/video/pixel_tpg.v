@@ -1,4 +1,4 @@
-module tpg(
+module pixel_tpg(
   input  wire clk_pix,     // pixel clock ~25 MHz
   input  wire resetn,
   input  wire [9:0] hcount,      // from vga_timing
@@ -11,7 +11,9 @@ module tpg(
 );
 
 always @(posedge clk_pix) begin
-  if(de) begin
+  if (resetn) begin
+    
+  end else if(de) begin
     rgb_r <= 3'b000;
     rgb_g <= 3'b000;     
     rgb_b <= 3'b000;

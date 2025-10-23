@@ -7,5 +7,27 @@ module vga_top (
     output reg [2:0] rgb_g,       // 3 bits green
     output reg [2:0] rgb_b
 )
+    vga_timing vga_timing_1 (
+        .clk_pix()
+        .resetn()
+        .hcount()
+        .vcount()
+        .hsync()
+        .vsync()
+        .de()
+    )
+
+    pixel_tpg pixel_tpg_1(
+        .clk_pix()
+        .resetn()
+        .hcount()
+        .vcount()
+        .hsync()
+        .vsync()
+        .de()
+    )
+
+
+
 
 
