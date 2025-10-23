@@ -18,13 +18,36 @@ always @(posedge clk_pix) begin
     rgb_g <= 3'b000;     
     rgb_b <= 3'b000;
     end else if (mode == 2'b00) begin //colour bars
-
-    end else if (mode == 2'b01) begin //grid
-
-    end else if (mode == 2'b10) begin //checker
-
-    end else if (mode == 2'b11) begin //cell markers
-
+      if ((hcount => 80 && hcount <= 159) || (hcount => 320 && hcount <= 399) || (hcount => 560 && hcount <= 639))
+        rgb_r <= 3'b111;
+      else if ((hcount => 160 && hcount <= 239) || (hcount => 400 && hcount <= 479) || (hcount => 640 && hcount <= 719))
+        rgb_g <= 3'b111;
+      else ((hcount => 240 && hcount <= 319) || (hcount => 480 && hcount <= 559))
+        rgb_b <= 3'b111;
+    end 
+    else if (mode == 2'b01) begin //grid
+      if (() || () || ())
+        rgb_r <= 3'b111;
+      else if (() || () || ())
+        rgb_g <= 3'b111;
+      else (() || ())
+        rgb_b <= 3'b111;     
+    end 
+    else if (mode == 2'b10) begin //checker
+      if (() || () || ())
+        rgb_r <= 3'b111;
+      else if (() || () || ())
+        rgb_g <= 3'b111;
+      else (() || ())
+        rgb_b <= 3'b111;
+    end 
+    else if (mode == 2'b11) begin //cell markers
+      if (() || () || ())
+        rgb_r <= 3'b111;
+      else if (() || () || ())
+        rgb_g <= 3'b111;
+      else (() || ())
+        rgb_b <= 3'b111;
     end
 
 end
