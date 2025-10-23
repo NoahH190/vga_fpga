@@ -16,5 +16,4 @@ always @(posedge clk_pix) begin
     rgb_g <= 3'b000;     
     rgb_b <= 3'b000;
   end
-
 end
