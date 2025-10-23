@@ -5,7 +5,7 @@ module vga_top (
     output wire vsync;
     output reg [2:0] rgb_r,       // 3 bits red
     output reg [2:0] rgb_g,       // 3 bits green
-    output reg [3:0] rgb_b
+    output reg [2:0] rgb_b
 )
 
 
