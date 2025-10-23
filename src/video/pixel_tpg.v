@@ -26,11 +26,82 @@ always @(posedge clk_pix) begin
         rgb_b <= 3'b111;
     end 
     else if (mode == 2'b01) begin //grid
-      if (() || () || ())
+      if ((hcount >= 134 && hcount <= 143) ||
+      (hcount >= 188 && hcount <= 197) ||
+      (hcount >= 242 && hcount <= 251) ||
+      (hcount >= 296 && hcount <= 305) ||
+      (hcount >= 350 && hcount <= 359) ||
+      (hcount >= 404 && hcount <= 413) ||
+      (hcount >= 458 && hcount <= 467) ||
+      (hcount >= 512 && hcount <= 521) ||
+      (hcount >= 566 && hcount <= 575) ||
+      (hcount >= 620 && hcount <= 629) ||
+      (vcount >= 23  && vcount <= 32)  ||
+      (vcount >= 77  && vcount <= 86)  ||
+      (vcount >= 131 && vcount <= 140) ||
+      (vcount >= 185 && vcount <= 194) ||
+      (vcount >= 239 && vcount <= 248) ||
+      (vcount >= 293 && vcount <= 302) ||
+      (vcount >= 347 && vcount <= 356) ||
+      (vcount >= 401 && vcount <= 410) ||
+      (vcount >= 455 && vcount <= 464))
         rgb_r <= 3'b111;
-      else if (() || () || ())
+      else if ( ((hcount >= 134 && hcount <= 143) && ((vcount >= 23  && vcount <= 32) ||
+      (vcount >= 131 && vcount <= 140) ||
+      (vcount >= 239 && vcount <= 248) ||
+      (vcount >= 347 && vcount <= 356) ||
+      (vcount >= 455 && vcount <= 464))) ||
+
+      ((hcount >= 188 && hcount <= 197) && ((vcount >= 77  && vcount <= 86)  ||
+      (vcount >= 185 && vcount <= 194) ||
+      (vcount >= 293 && vcount <= 302) ||
+      (vcount >= 401 && vcount <= 410))) ||
+
+      ((hcount >= 242 && hcount <= 251) && ((vcount >= 23  && vcount <= 32)  ||
+      (vcount >= 131 && vcount <= 140) ||
+      (vcount >= 239 && vcount <= 248) ||
+      (vcount >= 347 && vcount <= 356) ||
+      (vcount >= 455 && vcount <= 464))) ||
+
+      ((hcount >= 296 && hcount <= 305) && ((vcount >= 77  && vcount <= 86)  ||
+      (vcount >= 185 && vcount <= 194) ||
+      (vcount >= 293 && vcount <= 302) ||
+      (vcount >= 401 && vcount <= 410))) ||
+
+      ((hcount >= 350 && hcount <= 359) && ((vcount >= 23  && vcount <= 32)  ||
+      (vcount >= 131 && vcount <= 140) ||
+      (vcount >= 239 && vcount <= 248) ||
+      (vcount >= 347 && vcount <= 356) ||
+      (vcount >= 455 && vcount <= 464))) ||
+
+      ((hcount >= 404 && hcount <= 413) && ((vcount >= 77  && vcount <= 86)  ||
+      (vcount >= 185 && vcount <= 194) ||
+      (vcount >= 293 && vcount <= 302) ||
+      (vcount >= 401 && vcount <= 410))) ||
+
+      ((hcount >= 458 && hcount <= 467) && ((vcount >= 23  && vcount <= 32)  ||
+      (vcount >= 131 && vcount <= 140) ||
+      (vcount >= 239 && vcount <= 248) ||
+      (vcount >= 347 && vcount <= 356) ||
+      (vcount >= 455 && vcount <= 464))) ||
+
+      ((hcount >= 512 && hcount <= 521) && ((vcount >= 77  && vcount <= 86)  ||
+      (vcount >= 185 && vcount <= 194) ||
+      (vcount >= 293 && vcount <= 302) ||
+      (vcount >= 401 && vcount <= 410))) ||
+
+      ((hcount >= 566 && hcount <= 575) && ((vcount >= 23  && vcount <= 32)  ||
+      (vcount >= 131 && vcount <= 140) ||
+      (vcount >= 239 && vcount <= 248) ||
+      (vcount >= 347 && vcount <= 356) ||
+      (vcount >= 455 && vcount <= 464))) ||
+
+      ((hcount >= 620 && hcount <= 629) && ((vcount >= 77  && vcount <= 86)  ||
+      (vcount >= 185 && vcount <= 194) ||
+      (vcount >= 293 && vcount <= 302) ||
+      (vcount >= 401 && vcount <= 410))) )
         rgb_g <= 3'b111;
-      else (() || ())
+      else
         rgb_b <= 3'b111;     
     end 
     else if (mode == 2'b10) begin //checker
