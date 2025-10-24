@@ -8,21 +8,21 @@ module vga_top (
     output reg [2:0] rgb_b
 )
     vga_timing vga_timing_1 (
-        .clk_pix(),
-        .resetn(),
+        .clk_pix(clk_pix),
+        .resetn(resetn),
         .hcount(),
         .vcount(),
-        .hsync(),
-        .vsync(),
+        .hsync(hsync),
+        .vsync(vsync),
         .de()
     )
 
     pixel_tpg pixel_tpg_1(
-        .clk_pix(),     
+        .clk_pix(clk_pixel),     
         .resetn(),
-        .hcount(),      
-        .vcount(),
-        .de(),         
+        .hcount(vga_timing.hcount),      
+        .vcount(vga_timing.vcount),
+        .de(timing.de),         
         .mode(),        
         .rgb_r(),       
         .rgb_g(),       

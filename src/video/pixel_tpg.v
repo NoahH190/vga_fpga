@@ -25,7 +25,7 @@ always @(posedge clk_pix) begin
       else ((hcount => 240 && hcount <= 319) || (hcount => 480 && hcount <= 559))
         rgb_b <= 3'b111;
     end 
-    else if (mode == 2'b01) begin //grid
+    else if (mode == 2'b01) begin //checker
       if ((hcount >= 134 && hcount <= 143) ||
       (hcount >= 188 && hcount <= 197) ||
       (hcount >= 242 && hcount <= 251) ||
