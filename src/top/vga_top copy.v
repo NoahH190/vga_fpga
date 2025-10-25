@@ -20,19 +20,15 @@ module vga_top (
         .hsync(hsync),
         .vsync(vsync),
         .de()
-    )
+    );
 
-    pixel_tpg pixel_tpg_1(
-        .clk_pix(clk_pixel),     
-        .resetn(),
-        .hcount(vga_timing.hcount),      
-        .vcount(vga_timing.vcount),
-        .de(timing.de),         
-        .mode(),        
-        .rgb_r(),       
-        .rgb_g(),       
-        .rgb_b()
-    )
+    assign rgb_r = vga_vid ? 3'b111 : 3'b000;
+    assign rgb_g = vga_vid ? 3'b111 : 3'b000;
+    assign rgb_b = vga_vid ? 3'b111 : 3'b000;
+    assign hsync = ~vga_hsync;
+    assign vsync = ~vga_vsync;
+
+endmodule
 
 
 
