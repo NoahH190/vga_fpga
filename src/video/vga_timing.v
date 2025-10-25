@@ -6,7 +6,7 @@ module vga_timing_640x480(
     parameter V_VISIBLE = 480,
     parameter V_FRONT_PORCH = 10,
     parameter V_SYNC_PULSE = 2,
-    parameter V_BACK_PORCH = 29
+    parameter V_BACK_PORCH = 33
     )(
     input wire clk_pix,
     input wire resetn,
