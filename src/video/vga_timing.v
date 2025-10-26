@@ -10,18 +10,18 @@ module vga_timing_640x480(
     )(
     input wire clk_pix,
     input wire resetn,
-    output wire [9:0] hcount,
-    output wire [9:0] vcount,
-    output wire hsync,
-    output wire vsync,
+    output reg [9:0] hcount = 0;
+    output reg [9:0] vcount = 0;
+    output reg hsync = 1'b1;
+    output reg vsync = 1'b1;
     output wire de
 );
 
 localparam H_TOTAL = H_VISIBLE + H_FRONT_PORCH + H_SYNC_PULSE + H_BACK_PORCH;
 localparam V_TOTAL = V_VISIBLE + V_FRONT_PORCH + V_SYNC_PULSE + V_BACK_PORCH;
 
-always @(posedge clk_pix or posedge resetn) begin
-    if (resetn) begin
+always @(posedge clk_pix or negedge resetn) begin
+    if (!resetn) begin
         hcount <= 0;
         vcount <= 0;
     end else begin
@@ -38,12 +38,11 @@ always @(posedge clk_pix or posedge resetn) begin
 end
 
 // Sync generation — active low typical
-always @(posedge clk_pix) begin
-    hsync <= ~((hcount >= (H_VISIBLE + H_FRONT_PORCH)) &&
-                (hcount <  (H_VISIBLE + H_FRONT_PORCH + H_SYNC_PULSE)));
-    vsync <= ~((vcount >= (V_VISIBLE + V_FRONT_PORCH)) &&
-                (vcount <  (V_VISIBLE + V_FRONT_PORCH + V_SYNC_PULSE)));
-end
+hsync <= ~((hcount >= (H_VISIBLE + H_FRONT_PORCH)) &&
+            (hcount <  (H_VISIBLE + H_FRONT_PORCH + H_SYNC_PULSE)));
+vsync <= ~((vcount >= (V_VISIBLE + V_FRONT_PORCH)) &&
+            (vcount <  (V_VISIBLE + V_FRONT_PORCH + V_SYNC_PULSE)));
+
 
 // Data enable active during visible area
 assign de = (hcount < H_VISIBLE) && (vcount < V_VISIBLE);
