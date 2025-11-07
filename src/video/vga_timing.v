@@ -10,10 +10,10 @@ module vga_timing_640x480(
     )(
     input wire clk_pix,
     input wire resetn,
-    output reg [9:0] hcount = 0;
-    output reg [9:0] vcount = 0;
-    output reg hsync = 1'b1;
-    output reg vsync = 1'b1;
+    output reg [9:0] hcount = 0,
+    output reg [9:0] vcount = 0,
+    output reg hsync = 1'b1,
+    output reg vsync = 1'b1,
     output wire de
 );
 
